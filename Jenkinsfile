@@ -8,11 +8,11 @@ pipeline {
             steps {
                 // Build the custom MySQL image
                 dir('sql') {
-                    sh 'docker build -t siddharthkothari9403/mysql:latest .'
+                    sh 'docker build -t sankalpkothari/mysql:latest .'
                 }
 
                 // Run the MySQL container
-                sh 'docker run -d --rm --name test-db -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=elective_management -p 3308:3306 siddharthkothari9403/mysql:latest'
+                sh 'docker run -d --rm --name test-db -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=elective_management -p 3308:3306 sankalpkothari/mysql:latest'
 
                 // Wait for the database to be ready
                 sh '''
