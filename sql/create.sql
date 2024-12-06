@@ -1,6 +1,7 @@
 drop database if exists elective_management;
 create database elective_management;
 use elective_management;
+
 create table user(
     user_id INTEGER PRIMARY KEY auto_increment,
     username varchar(100) UNIQUE NOT NULL,
