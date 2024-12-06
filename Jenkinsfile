@@ -40,21 +40,21 @@ pipeline {
                 stage("Build Frontend Image") {
                     steps {
                         dir('elecfr-web') {
-                            sh 'docker build -t siddharthkothari9403/elecfr-web:latest .'
+                            sh 'docker build -t sankalpkothari/elecfr-web:latest .'
                         }
                     }
                 }
                 stage("Build Backend Image") {
                     steps {
                         dir('ElectiveManagement') {
-                            sh 'docker build -t siddharthkothari9403/elective-management:latest .'
+                            sh 'docker build -t sankalpkothari/elective-management:latest .'
                         }
                     }
                 }
                 stage("Build Database Image") {
                     steps {
                         dir('sql') {
-                            sh 'docker build -t siddharthkothari9403/mysql:latest .'
+                            sh 'docker build -t sankalpkothari/mysql:latest .'
                         }
                     }
                 }
@@ -63,9 +63,9 @@ pipeline {
         stage("Stage 3: Push Docker Images to Dockerhub") {
             steps {
                 sh 'echo $DOCKERHUB_CRED_PSW | docker login -u $DOCKERHUB_CRED_USR --password-stdin'
-                sh 'docker push siddharthkothari9403/elecfr-web:latest'
-                sh 'docker push siddharthkothari9403/elective-management:latest'
-                sh 'docker push siddharthkothari9403/mysql:latest'
+                sh 'docker push sankalpkothari/elecfr-web:latest'
+                sh 'docker push sankalpkothari/elective-management:latest'
+                sh 'docker push sankalpkothari/mysql:latest'
             }
         }
         stage("Stage 4: Ansible Deployment") {
